@@ -3,11 +3,15 @@ const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
 let myDrills = []
 
+let drillsFromLocalStorage = JSON.parse(localStorage.getItem("myDrills"))
+console.log(drillsFromLocalStorage)
 
 inputBtn.addEventListener("click", function() {
     myDrills.push(inputEl.value)
-    renderDrills()
     inputEl.value = ""
+    localStorage.setItem("myDrills", JSON.stringify(myDrills))
+    renderDrills()
+
 })
 
 function renderDrills(){
